@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import path from "node:path";
 
 import react from "@vitejs/plugin-react";
