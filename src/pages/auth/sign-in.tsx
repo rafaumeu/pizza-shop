@@ -7,6 +7,8 @@ import { z } from 'zod'
 
 import { Input } from '@/components/ui/input'
 
+import { signin } from '@/api/signin'
+import { useMutation } from '@tanstack/react-query'
 import { Button } from '../../components/ui/button'
 
 const signInForm = z.object({
@@ -21,10 +23,13 @@ export function SignIn() {
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<SignInForm>()
+  const { mutateAsync: authenticate } = useMutation({
+    mutationFn: signin,
+  })
   async function handleSignIn(data: SignInForm) {
     try {
       console.log(data)
-      await new Promise((resolve) => setTimeout(resolve, 2000))
+      await authenticate({ email: data.email })
       toast.success('Enviamos um link de autenticação para o seu email.', {
         action: {
           label: 'Reenviar',
