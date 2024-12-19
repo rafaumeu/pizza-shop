@@ -1,10 +1,12 @@
 import { Label } from '@radix-ui/react-label'
+import { useMutation } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
+import { registerRestaurant } from '@/api/register-restaurant'
 import { Input } from '@/components/ui/input'
 
 import { Button } from '../../components/ui/button'
@@ -25,14 +27,22 @@ export function SignUp() {
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<SignUpForm>()
+  const { mutateAsync: registerRestaurantFn } = useMutation({
+    mutationFn: registerRestaurant,
+  })
   async function handleSignUp(data: SignUpForm) {
     try {
-      console.log(data)
+      await registerRestaurantFn({
+        restaurantName: data.restaurantName,
+        managerName: data.managerName,
+        phone: data.phone,
+        email: data.email,
+      })
       await new Promise((resolve) => setTimeout(resolve, 2000))
       toast.success('Restaurante cadastrado com suceso!', {
         action: {
           label: 'Login',
-          onClick: () => navigate('/sign-in'),
+          onClick: () => navigate(`/sign-in?email=${data.email}`),
         },
       })
     } catch (error) {
