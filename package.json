@@ -4,8 +4,20 @@
   "workspaces": [
     "packages/*"
   ],
-  "dependencies": {},
+  "scripts": {
+    "dev:frontend": "npm run dev -w packages/frontend",
+    "dev:backend": "npm run dev -w packages/backend",
+    "dev": "npm-run-all --parallel dev:frontend dev:backend",
+    "build:frontend": "npm run build -w packages/frontend",
+    "build:backend": "npm run build -w packages/backend",
+    "build": "npm-run-all build:frontend build:backend",
+    "start:frontend": "npm run preview -w packages/frontend",
+    "start:backend": "npm run start -w packages/backend",
+    "lint": "npm run lint -w packages/frontend -w packages/backend",
+    "test": "npm run test -w packages/frontend -w packages/backend"
+  },
   "devDependencies": {
-    "lerna": "^8.1.9"
+    "lerna": "^8.1.9",
+    "npm-run-all": "^4.1.5"
   }
 }
