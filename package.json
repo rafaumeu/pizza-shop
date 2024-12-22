@@ -13,7 +13,7 @@
     "build": "npm-run-all build:frontend build:backend",
     "start:frontend": "npm run preview -w packages/frontend",
     "start:backend": "npm run start -w packages/backend",
-    "lint": "npm run lint -w packages/frontend -w packages/backend",
+    "lint:fix": "npm run lint -w packages/frontend",
     "test": "npm run test -w packages/frontend -w packages/backend"
   },
   "devDependencies": {

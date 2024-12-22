@@ -1,8 +1,8 @@
-import { api } from "@/lib/axios";
+import { api } from '@/lib/axios'
 
 export type SignInBody = {
-  email: string;
-};
+  email: string
+}
 export async function signin({ email }: SignInBody) {
-  await api.post("/authenticate", { email });
+  await api.post('/authenticate', { email })
 }
