@@ -1,11 +1,15 @@
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 import { ArrowRight, Search, X } from 'lucide-react'
 
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
+import { OrderTableRowProps } from '@/pages/orders/orders'
 
+import { OrderStatus } from '../../components/order-status'
 import { Button } from '../../components/ui/button'
 import { TableCell, TableRow } from '../../components/ui/table'
 import { OrderDetails } from './order-details'
-export function OrderTableRow() {
+export function OrderTableRow({ order }: OrderTableRowProps) {
   return (
     <TableRow>
       <TableCell>
@@ -20,27 +24,34 @@ export function OrderTableRow() {
         </Dialog>
       </TableCell>
       <TableCell className="font-mon text-xm font-medium">
-        asdfdasfadfad
+        {order.orderId}
       </TableCell>
-      <TableCell className="text-muted-foreground"> há 15 minutos </TableCell>
+      <TableCell className="text-muted-foreground">
+        {formatDistanceToNow(new Date(order.createdAt), {
+          locale: ptBR,
+          addSuffix: true,
+        })}
+      </TableCell>
       <TableCell>
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-slate-400" />
-          <span className="font-medium text-muted-foreground">Pendente</span>
-        </div>
+        <OrderStatus status={order.status} />
       </TableCell>
-      <TableCell className="font-medium">Rafael Dias Zendron</TableCell>
-      <TableCell className="font-medium">R$149,90</TableCell>
+      <TableCell className="font-medium">{order.customerName}</TableCell>
+      <TableCell className="font-medium">
+        {order.total.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        })}
+      </TableCell>
       <TableCell>
         <Button variant="outline" size="xm">
           <ArrowRight className="mr-2 h-3 w-3" />
-          Aprovar
+          {order.status === 'pending' ? 'Processar' : 'Entregar'}
         </Button>
       </TableCell>
       <TableCell>
         <Button variant="ghost" size="xm">
           <X className="mr-2 h-3 w-3" />
-          Cancelar
+          {order.status === 'pending' ? 'Cancelar' : 'Remover'}
         </Button>
       </TableCell>
     </TableRow>
