@@ -7,11 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { MetricCardSkeleton } from './metric-card-skeleton'
 
 export function DayOrdersAmountCard() {
-  const { data: dayOrdersAmount, isFetching: isLoadingDayOrdersAmount } =
-    useQuery({
-      queryFn: getDayOrdersAmount,
-      queryKey: ['metrics', 'day-orders-amount'],
-    })
+  const { data: dayOrdersAmount } = useQuery({
+    queryFn: getDayOrdersAmount,
+    queryKey: ['metrics', 'day-orders-amount'],
+  })
   return (
     <Card>
       <CardHeader className="flex-row items-center justify-between space-y-0 pb-2">

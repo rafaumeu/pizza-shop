@@ -7,6 +7,7 @@ import {
   GetOrderDetailsResponse,
 } from '@/api/get-order-details'
 import { DialogContent, DialogHeader } from '@/components/ui/dialog'
+import { OrderDetailsSkeleton } from '@/pages/orders/order-details-skeletron'
 
 import { OrderStatus } from '../../components/order-status'
 import { DialogDescription, DialogTitle } from '../../components/ui/dialog'
@@ -36,7 +37,7 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
         <DialogTitle>Pedido: {orderId}</DialogTitle>
         <DialogDescription>Detalhes do Pedido</DialogDescription>
       </DialogHeader>
-      {order && (
+      {order ? (
         <div className="space-y-6">
           <Table>
             <TableBody>
@@ -128,6 +129,8 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
             </TableFooter>
           </Table>
         </div>
+      ) : (
+        <OrderDetailsSkeleton />
       )}
     </DialogContent>
   )
