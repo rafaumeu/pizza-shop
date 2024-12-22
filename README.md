@@ -1,6 +1,5 @@
-
 <p align="center">
-  <img src="https://img.shields.io/badge/🍕-Pizza%20Shop%20Monorepo-red?style=for-the-badge" alt="Pizza Shop Monorepo">
+  <img src="https://img.shields.io/badge/%F0%9F%8D%95-Pizza%20Shop%20Monorepo-red?style=for-the-badge" alt="Pizza Shop Monorepo">
 </p>
 
 # 🍕 Pizza Shop Monorepo
@@ -13,7 +12,7 @@ A comprehensive, production-ready monorepo for a complete food delivery manageme
 
 Pizza Shop is not just an app, it's a complete restaurant management platform with:
 
-- 🖥️ Admin Dashboard
+- 🔤 Admin Dashboard
 - 📱 Restaurant Management Backend (powered by **Bun**)
 - 🔐 Secure Authentication
 - 📊 Real-time Metrics
@@ -48,7 +47,7 @@ Pizza Shop is not just an app, it's a complete restaurant management platform wi
   <img src="https://img.shields.io/badge/PNPM-F69220?style=for-the-badge&logo=pnpm&logoColor=white" alt="PNPM">
 </p>
 
-## 📂 Monorepo Structure
+## 🗂 Monorepo Structure
 
 ```
 pizza-shop/
@@ -98,7 +97,7 @@ pnpm dev
 - 🐳 Docker Containers
 - ☁️ Serverless Deployment
 
-## 📈 Project Metrics
+## 📊 Project Metrics
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=rafaumeu&show_icons=true&theme=radical" alt="GitHub Stats">
@@ -107,6 +106,19 @@ pnpm dev
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=rafaumeu&color=blueviolet&style=flat-square" alt="Profile Views">
 </p>
+
+## 🔄 Milestone Update
+
+The **Dashboard Module** is now feature-complete with the following milestones achieved:
+
+- ✔ Project Setup
+- ✔ Pages and Components
+- ✔ API Integration for Managed Restaurant and Profile Management
+
+Remaining tasks:
+
+1. Loading and Empty States for Charts and Lists
+2. Comprehensive Testing Suite Implementation
 
 ---
 
