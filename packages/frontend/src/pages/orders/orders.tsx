@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/table'
 import { OrderTableFilters } from '@/pages/orders/order-table-filters'
 import { OrderTableRow } from '@/pages/orders/order-table-row'
+import { OrderTableSkeleton } from '@/pages/orders/orders-table-skeleton'
 
 import { Pagination } from '../../components/pagination'
 
@@ -25,7 +26,7 @@ export function Orders() {
     .number()
     .transform((page) => page - 1)
     .parse(searchParams.get('page') ?? 1)
-  const { data: result } = useQuery({
+  const { data: result, isLoading: isLoadingOrders } = useQuery({
     queryKey: ['orders', pageIndex, orderId, status, customerName],
     queryFn: () =>
       getOrders({
@@ -64,6 +65,7 @@ export function Orders() {
                 </TableRow>
               </TableHeader>
               <TableBody>
+                {isLoadingOrders && <OrderTableSkeleton />}
                 {result &&
                   result.orders.map((order) => (
                     <OrderTableRow key={order.orderId} order={order} />
