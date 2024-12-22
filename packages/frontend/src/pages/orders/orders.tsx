@@ -27,13 +27,22 @@ export interface OrderTableRowProps {
 }
 export function Orders() {
   const [searchParams, setSearchParams] = useSearchParams()
+  const orderId = searchParams.get('orderId')
+  const status = searchParams.get('status')
+  const customerName = searchParams.get('customerName')
   const pageIndex = z.coerce
     .number()
     .transform((page) => page - 1)
     .parse(searchParams.get('page') ?? 1)
   const { data: result } = useQuery({
-    queryKey: ['orders', pageIndex],
-    queryFn: () => getOrders({ pageIndex }),
+    queryKey: ['orders', pageIndex, orderId, status, customerName],
+    queryFn: () =>
+      getOrders({
+        pageIndex,
+        orderId,
+        status: status === 'all' ? null : status,
+        customerName,
+      }),
   })
   function handlePaginate(pageIndex: number) {
     setSearchParams((state) => {
