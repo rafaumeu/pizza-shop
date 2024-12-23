@@ -9,7 +9,8 @@
     "lint": "eslint src --ext ts,tsx",
     "lint:fix": "eslint src --ext ts,tsx --fix",
     "preview": "vite preview",
-    "commit": "cz"
+    "commit": "cz",
+    "test": "vitest"
   },
   "config": {
     "commitizen": {
@@ -30,6 +31,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "happy-dom": "^15.11.7",
     "localstorage": "^1.0.1",
     "lucide-react": "^0.468.0",
     "match-sorter": "^8.0.0",
@@ -45,12 +47,15 @@
     "sort-by": "^1.2.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
+    "vitest": "^2.1.8",
     "zod": "^3.24.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
     "@rocketseat/eslint-config": "^2.2.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
     "@types/node": "^22.10.2",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",

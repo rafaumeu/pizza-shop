@@ -47,6 +47,16 @@ Pizza Shop is not just an app, it's a complete restaurant management platform wi
   <img src="https://img.shields.io/badge/PNPM-F69220?style=for-the-badge&logo=pnpm&logoColor=white" alt="PNPM">
 </p>
 
+## 📋 Key Features
+
+- 📊 Real-time order tracking and analytics
+- 🏪 Multi-store management capabilities
+- 📱 Responsive design for all devices
+- 🔐 Role-based access control
+- 📈 Sales and inventory analytics
+- 🌙 Dark mode support
+- 🌐 Internationalization ready
+
 ## 🗂 Monorepo Structure
 
 ```
@@ -54,10 +64,18 @@ pizza-shop/
 ├── packages/
 │   ├── frontend/   # React Dashboard
 │   │   ├── src/
+│   │   │   ├── components/   # Reusable UI components
+│   │   │   ├── pages/        # Application routes
+│   │   │   ├── hooks/        # Custom React hooks
+│   │   │   └── services/     # API integration
 │   │   ├── vite.config.ts
 │   │   └── package.json
 │   └── backend/    # ElysiaJS API powered by Bun
 │       ├── src/
+│       │   ├── controllers/  # Request handlers
+│       │   ├── models/       # Data models
+│       │   ├── routes/       # API endpoints
+│       │   └── services/     # Business logic
 │       ├── drizzle.config.ts
 │       └── package.json
 ├── lerna.json
@@ -69,9 +87,9 @@ pizza-shop/
 ### Prerequisites
 
 - **Node.js** 18+
-- **PNPM**
-- **Docker**
-- **Bun** (for backend)
+- **PNPM** 8+
+- **Docker** 24+
+- **Bun** 1.0+ (for backend)
 
 ### Installation & Setup
 
@@ -85,8 +103,39 @@ cd pizza-shop
 # Install dependencies
 pnpm install
 
+# Set up environment variables
+cp .env.example .env
+
 # Start development environment
 pnpm dev
+```
+
+### Environment Variables
+
+```bash
+# Frontend
+VITE_API_URL=http://localhost:3333
+VITE_ENABLE_DEVTOOLS=true
+
+# Backend
+DATABASE_URL=postgres://user:pass@localhost:5432/pizza-shop
+JWT_SECRET=your-secret-key
+```
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+pnpm test
+
+# Run frontend tests
+pnpm test:frontend
+
+# Run backend tests
+pnpm test:backend
+
+# Run tests in watch mode
+pnpm test:watch
 ```
 
 ## 🌈 Deployment & Infrastructure
@@ -96,6 +145,17 @@ pnpm dev
 - 🌐 Vercel (Frontend)
 - 🐳 Docker Containers
 - ☁️ Serverless Deployment
+
+### Docker Support
+
+```bash
+# Build and run with Docker Compose
+docker-compose up -d
+
+# Build individual services
+docker-compose build frontend
+docker-compose build backend
+```
 
 ## 📊 Project Metrics
 
@@ -109,16 +169,35 @@ pnpm dev
 
 ## 🔄 Milestone Update
 
-The **Dashboard Module** is now feature-complete with the following milestones achieved:
+The **Dashboard Module** continues to evolve with significant progress:
 
-- ✔ Project Setup
-- ✔ Pages and Components
-- ✔ API Integration for Managed Restaurant and Profile Management
+- [x] Project Setup
+- [x] Pages and Components
+- [x] API Integration for Managed Restaurant and Profile Management
+- [x] Loading States Implementation
+  - Enhanced dashboard cards loading states
+  - Improved order components UI
+  - Added loading states for popular products and revenue charts
+  - Optimized order details and day orders card loading experience
 
 Remaining tasks:
 
-1. Loading and Empty States for Charts and Lists
-2. Comprehensive Testing Suite Implementation
+- [ ] Empty States for Charts and Lists
+- [ ] Comprehensive Testing Suite Implementation
+
+## 👥 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ---
 
