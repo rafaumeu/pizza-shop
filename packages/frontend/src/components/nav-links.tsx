@@ -1,19 +1,17 @@
 import { Link, LinkProps, useLocation } from 'react-router-dom'
 
-import { cn } from '@/lib/utils'
+export type NavLinkProps = LinkProps
 
-export function NavLink({ children, ...props }: LinkProps) {
+export function NavLink(props: NavLinkProps) {
   const { pathname } = useLocation()
 
   return (
     <Link
-      className={cn(
-        'flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground',
-        pathname === props.to && 'text-foreground',
-      )}
+      data-current={pathname === props.to}
+      className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground data-[current=true]:text-foreground"
       {...props}
     >
-      {children}
+      {props.children}
     </Link>
   )
 }

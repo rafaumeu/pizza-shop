@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "generate": "drizzle-kit generate:pg",
-    "dev": "bun --watch src/http/server.ts",
+    "dev": "docker-compose -f docker-compose.yml up -d && bun --watch src/http/server.ts",
     "migrate": "bun src/db/migrate.ts",
     "seed": "bun src/db/seed.ts"
   },
