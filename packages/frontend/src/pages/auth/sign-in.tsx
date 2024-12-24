@@ -6,7 +6,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { signin } from '@/api/sign-in'
+import { signIn } from '@/api/sign-in'
 import { Input } from '@/components/ui/input'
 
 import { Button } from '../../components/ui/button'
@@ -29,7 +29,7 @@ export function SignIn() {
     },
   })
   const { mutateAsync: authenticate } = useMutation({
-    mutationFn: signin,
+    mutationFn: signIn,
   })
   async function handleSignIn(data: SignInForm) {
     try {
