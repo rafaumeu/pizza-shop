@@ -13,7 +13,7 @@ import {
 } from 'recharts'
 import colors from 'tailwindcss/colors'
 
-import { getDaillyRevenueInPeriod } from '@/api/get-dailly-revenue-in-period'
+import { getDailyRevenueInPeriod } from '@/api/get-daily-revenue-in-period'
 
 import {
   Card,
@@ -32,7 +32,7 @@ export function RevenueChart() {
   })
   const { data: dailyRevenueInPeriod } = useQuery({
     queryFn: () =>
-      getDaillyRevenueInPeriod({
+      getDailyRevenueInPeriod({
         from: dateRange?.from,
         to: dateRange?.to,
       }),
@@ -46,6 +46,7 @@ export function RevenueChart() {
       }
     })
   }, [dailyRevenueInPeriod])
+
   return (
     <Card className="col-span-6">
       <CardHeader className="flex-row items-center justify-between pb-8">
