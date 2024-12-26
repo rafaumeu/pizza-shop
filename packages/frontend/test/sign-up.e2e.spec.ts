@@ -12,6 +12,7 @@ test('sign in successfully', async ({ page }) => {
   const toast = page.getByText('Restaurante cadastrado com sucesso!')
 
   expect(toast).toBeVisible()
+  await page.waitForTimeout(5000)
 })
 test('sign up with error', async ({ page }) => {
   await page.goto('/sign-up', { waitUntil: 'networkidle' })
