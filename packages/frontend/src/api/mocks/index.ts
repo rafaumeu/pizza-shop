@@ -1,5 +1,8 @@
 import { setupWorker } from 'msw/browser'
 
+import { approveOrderMock } from '@/api/mocks/approve-order-mock'
+import { cancelOrderMock } from '@/api/mocks/cancelled-order-mock'
+import { dispatchOrderMock } from '@/api/mocks/dispatch-order-mock'
 import { getDailyRevenueInPeriodMock } from '@/api/mocks/get-daily-revenue-in-period-mock'
 import { getDayOrdersAmountMock } from '@/api/mocks/get-day-orders-amount-mock'
 import { getManagedRestaurantMock } from '@/api/mocks/get-managed-restaurant-mock'
@@ -14,6 +17,8 @@ import { registerRestaurantMock } from '@/api/mocks/register-restaurant-mock'
 import { signInMock } from '@/api/mocks/sign-in-mock'
 import { updateProfileMock } from '@/api/mocks/update-profile.mock'
 import { env } from '@/env'
+
+import { deliverOrderMock } from './deliver-order-mock'
 export const worker = setupWorker(
   signInMock,
   registerRestaurantMock,
@@ -28,6 +33,10 @@ export const worker = setupWorker(
   updateProfileMock,
   getOrdersMock,
   getOrderDetailMock,
+  approveOrderMock,
+  cancelOrderMock,
+  deliverOrderMock,
+  dispatchOrderMock,
 )
 
 export async function enableMSW() {
