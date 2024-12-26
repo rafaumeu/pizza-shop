@@ -39,7 +39,7 @@ export function SignUp() {
         email: data.email,
       })
       await new Promise((resolve) => setTimeout(resolve, 2000))
-      toast.success('Restaurante cadastrado com suceso!', {
+      toast.success('Restaurante cadastrado com sucesso!', {
         action: {
           label: 'Login',
           onClick: () => navigate(`/sign-in?email=${data.email}`),
