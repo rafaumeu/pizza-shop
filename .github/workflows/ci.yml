@@ -17,7 +17,7 @@ jobs:
           if [ -f yarn.lock ]; then
             yarn install --frozen-lockfile 2>/dev/null || yarn install
           elif [ -f package-lock.json ]; then
-            npm ci
+            npm ci 2>/dev/null || npm install
           else
             npm install
           fi
