@@ -26,6 +26,8 @@
 ## 🚀 Overview
 
 <p align="center">
+**[Live Demo →](https://pizza-shop-five-sigma.vercel.app)**
+
 Pizza Shop is a modern and intuitive restaurant management dashboard, designed to provide restaurant owners with powerful insights and tools to efficiently manage their business.
 </p>
 
