@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://pizza-shop-five-sigma.vercel.app/sitemap.xml
