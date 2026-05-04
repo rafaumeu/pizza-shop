@@ -1,3 +1,7 @@
+<div align="center">
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=FF0080&height=180&section=header&text=Pizza%20Shop&fontSize=42&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=Restaurant%20Management%20Dashboard&descSize=18&descAlignY=52"/>
+</div>
+
 <p align="center">
   <h1 align="center">🍕 Pizza Shop - Restaurant Management Dashboard</h1>
 </p>
@@ -140,3 +144,8 @@ This project is open-source and available under the **MIT License**.
 ---
 
 <p align="center">Developed with ❤️ by Rafael Dias</p>
+
+<div align="center">
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=FF0080&height=100&section=footer"/>
+  <br/><sub>Built with ❤️ by <a href="https://github.com/rafaumeu">Rafael Zendron</a></sub>
+</div>
