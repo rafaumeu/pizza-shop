@@ -7,12 +7,15 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { useOrders } from '@/contexts/order-context'
 import { OrderTableFilters } from '@/pages/orders/order-table-filters'
 import { OrderTableRow } from '@/pages/orders/order-table-row'
 
 import { Pagination } from '../../components/pagination'
 
 export function Orders() {
+  const { filteredOrders, filters, totalCount } = useOrders()
+
   return (
     <>
       <Helmet title="Pedidos" />
@@ -36,13 +39,17 @@ export function Orders() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <OrderTableRow key={index} />
+                {filteredOrders.map((order) => (
+                  <OrderTableRow key={order.id} order={order} />
                 ))}
               </TableBody>
             </Table>
           </div>
-          <Pagination pageIndex={0} totalCount={100} perPages={10} />
+          <Pagination
+            pageIndex={filters.page}
+            totalCount={totalCount}
+            perPages={filters.perPage}
+          />
         </div>
       </div>
     </>

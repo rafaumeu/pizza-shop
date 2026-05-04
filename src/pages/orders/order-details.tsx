@@ -1,5 +1,12 @@
 import { DialogContent, DialogHeader } from '@/components/ui/dialog'
 
+import type { Order } from '@/types/order'
+import {
+  ORDER_STATUS_COLORS,
+  ORDER_STATUS_LABELS,
+  formatCurrency,
+  formatRelativeTime,
+} from '@/types/order'
 import { DialogDescription, DialogTitle } from '../../components/ui/dialog'
 import {
   Table,
@@ -11,11 +18,18 @@ import {
   TableRow,
 } from '../../components/ui/table'
 
-export function OrderDetails() {
+interface OrderDetailsProps {
+  order: Order
+}
+
+export function OrderDetails({ order }: OrderDetailsProps) {
+  const statusColor = ORDER_STATUS_COLORS[order.status]
+  const statusLabel = ORDER_STATUS_LABELS[order.status]
+
   return (
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Pedido: dafadfasg</DialogTitle>
+        <DialogTitle>Pedido: {order.id}</DialogTitle>
         <DialogDescription>Detalhes do Pedido</DialogDescription>
       </DialogHeader>
       <div className="space-y-6">
@@ -25,9 +39,9 @@ export function OrderDetails() {
               <TableCell className="text-muted-foreground">Status</TableCell>
               <TableCell className="flex justify-end">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-slate-400" />
-                  <span className="font-medium text-muted-foreground">
-                    Pendente
+                  <span className={`h-2 w-2 rounded-full ${statusColor.dot}`} />
+                  <span className={`font-medium ${statusColor.text}`}>
+                    {statusLabel}
                   </span>
                 </div>
               </TableCell>
@@ -35,26 +49,28 @@ export function OrderDetails() {
             <TableRow>
               <TableCell className="text-muted-foreground">Cliente</TableCell>
               <TableCell className="flex justify-end">
-                Rafael Dias Zendron
+                {order.customerName}
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell className="text-muted-foreground">Telefone</TableCell>
               <TableCell className="flex justify-end">
-                (11) 99999-9999{' '}
+                {order.customerPhone}
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell className="text-muted-foreground">E-mail</TableCell>
               <TableCell className="flex justify-end">
-                rafael.zendron22@gmail.com{' '}
+                {order.customerEmail}
               </TableCell>
             </TableRow>
             <TableRow>
               <TableCell className="text-muted-foreground">
                 Realizado há
               </TableCell>
-              <TableCell className="flex justify-end">Há 3 minutos</TableCell>
+              <TableCell className="flex justify-end">
+                {formatRelativeTime(order.createdAt)}
+              </TableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -68,24 +84,24 @@ export function OrderDetails() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell>Pizza de Calabresa Familia</TableCell>
-              <TableCell className="text-right">2</TableCell>
-              <TableCell className="text-right">R$ 49,90</TableCell>
-              <TableCell className="text-right">R$ 99,80</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Refrigerante 2L</TableCell>
-              <TableCell className="text-right">1</TableCell>
-              <TableCell className="text-right">R$ 5,00</TableCell>
-              <TableCell className="text-right">R$ 5,00</TableCell>
-            </TableRow>
+            {order.products.map((product) => (
+              <TableRow key={product.id}>
+                <TableCell>{product.name}</TableCell>
+                <TableCell className="text-right">{product.quantity}</TableCell>
+                <TableCell className="text-right">
+                  {formatCurrency(product.price)}
+                </TableCell>
+                <TableCell className="text-right">
+                  {formatCurrency(product.quantity * product.price)}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
           <TableFooter>
             <TableRow>
               <TableCell colSpan={3}>Total do pedido</TableCell>
               <TableCell className="text-right font-medium">
-                R$ 104,80
+                {formatCurrency(order.total)}
               </TableCell>
             </TableRow>
           </TableFooter>
