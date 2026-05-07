@@ -35,7 +35,11 @@
 Pizza Shop is a modern and intuitive restaurant management dashboard, designed to provide restaurant owners with powerful insights and tools to efficiently manage their business.
 </p>
 
-## 🌟 Key Features
+<div align="center">
+  <img src="./docs/screenshot.png" alt="Pizza Shop Screenshot" width="100%" />
+</div>
+
+## 🚀 Features
 
 ### 📊 Interactive Dashboard
 
